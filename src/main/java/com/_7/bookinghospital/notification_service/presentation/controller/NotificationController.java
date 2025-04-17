@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,5 +34,12 @@ public class NotificationController {
 		@PathVariable UUID notificationId) {
 
 		return ResponseEntity.status(HttpStatus.OK).body(null);
+	}
+
+	@DeleteMapping("/{notificationId}")
+	public ResponseEntity<String> deleteNotification(
+		@PathVariable UUID notificationId) {
+
+		return ResponseEntity.ok("정상적으로 삭제 되었습니다.");
 	}
 }
