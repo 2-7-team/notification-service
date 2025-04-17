@@ -8,10 +8,13 @@ import com._7.bookinghospital.notification_service.domain.model.Notification;
 import com._7.bookinghospital.notification_service.domain.repository.NotificationRepository;
 import com._7.bookinghospital.notification_service.infrastructure.jpa.NotificationJpaRepository;
 
-@Repository
-public class NotificationJpaRepositoryImpl implements NotificationRepository {
+import lombok.RequiredArgsConstructor;
 
-	NotificationJpaRepository notificationJpaRepository;
+@Repository
+@RequiredArgsConstructor
+public class SpringDataNotificationJpaRepositoryImpl implements NotificationRepository {
+
+	private final NotificationJpaRepository notificationJpaRepository;
 
 	@Override
 	public void save(Notification newNotification) {
