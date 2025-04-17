@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com._7.bookinghospital.notification_service.application.response.NotificationResponseDto;
+import com._7.bookinghospital.notification_service.application.service.NotificationService;
 import com._7.bookinghospital.notification_service.presentation.request.NotificationRequestDto;
 
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/notifications")
 @RequiredArgsConstructor
 public class NotificationController {
+
+	private final NotificationService notificationService;
 
 	@PostMapping
 	public ResponseEntity<NotificationResponseDto> createNotification(
