@@ -8,4 +8,6 @@ public interface NotificationRepository {
 	void save(Notification newNotification);
 
 	Notification findById(UUID notificationId);
+
+	void deleteById(UUID notificationId);
 }

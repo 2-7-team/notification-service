@@ -32,4 +32,9 @@ public class NotificationService {
 
 		return NotificationResponseDto.from(notification);
 	}
+
+	@Transactional
+	public void deleteNotification(UUID notificationId) {
+		notificationRepository.deleteById(notificationId);
+	}
 }

@@ -23,4 +23,9 @@ public class NotificationJpaRepositoryImpl implements NotificationRepository {
 		return notificationJpaRepository.findById((notificationId))
 			.orElseThrow(() -> new IllegalArgumentException("해당 알림을 찾을 수 없습니다."));
 	}
+
+	@Override
+	public void deleteById(UUID notificationId) {
+		notificationJpaRepository.deleteById((notificationId));
+	}
 }

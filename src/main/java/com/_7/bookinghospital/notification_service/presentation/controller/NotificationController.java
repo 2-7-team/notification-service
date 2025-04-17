@@ -47,6 +47,8 @@ public class NotificationController {
 	public ResponseEntity<String> deleteNotification(
 		@PathVariable UUID notificationId) {
 
+		notificationService.deleteNotification(notificationId);
+
 		return ResponseEntity.ok("정상적으로 삭제 되었습니다.");
 	}
 }
