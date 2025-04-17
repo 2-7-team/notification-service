@@ -29,7 +29,9 @@ public class NotificationController {
 	public ResponseEntity<NotificationResponseDto> createNotification(
 		@RequestBody NotificationRequestDto request) {
 
-		return ResponseEntity.status(HttpStatus.CREATED).body(null);
+		NotificationResponseDto response = notificationService.createNotification(request);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
 	@GetMapping("/{notificationId}")
