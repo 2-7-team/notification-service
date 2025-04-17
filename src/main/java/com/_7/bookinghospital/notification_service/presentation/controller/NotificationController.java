@@ -38,7 +38,9 @@ public class NotificationController {
 	public ResponseEntity<NotificationResponseDto> getNotification(
 		@PathVariable UUID notificationId) {
 
-		return ResponseEntity.status(HttpStatus.OK).body(null);
+		NotificationResponseDto response = notificationService.getNotification(notificationId);
+
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@DeleteMapping("/{notificationId}")
