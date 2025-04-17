@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com._7.bookinghospital.notification_service.application.response.NotificationResponseDto;
+import com._7.bookinghospital.notification_service.application.service.NotificationService;
 import com._7.bookinghospital.notification_service.presentation.request.NotificationRequestDto;
 
 import lombok.RequiredArgsConstructor;
@@ -22,23 +23,31 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class NotificationController {
 
+	private final NotificationService notificationService;
+
 	@PostMapping
 	public ResponseEntity<NotificationResponseDto> createNotification(
 		@RequestBody NotificationRequestDto request) {
 
-		return ResponseEntity.status(HttpStatus.CREATED).body(null);
+		NotificationResponseDto response = notificationService.createNotification(request);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
 	@GetMapping("/{notificationId}")
 	public ResponseEntity<NotificationResponseDto> getNotification(
 		@PathVariable UUID notificationId) {
 
-		return ResponseEntity.status(HttpStatus.OK).body(null);
+		NotificationResponseDto response = notificationService.getNotification(notificationId);
+
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@DeleteMapping("/{notificationId}")
 	public ResponseEntity<String> deleteNotification(
 		@PathVariable UUID notificationId) {
+
+		notificationService.deleteNotification(notificationId);
 
 		return ResponseEntity.ok("정상적으로 삭제 되었습니다.");
 	}
